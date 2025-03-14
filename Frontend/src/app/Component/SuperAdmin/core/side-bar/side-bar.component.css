@@ -1,0 +1,6 @@
+.router-link-active {
+    background-color: #f0f8ff; /* Light blue background */
+    color: #0000ff; /* Blue text color */
+    font-weight: bold; /* Optional: Make the text bold */
+    border-left: 4px solid #007bff; /* Optional: Add a left border for emphasis */
+  }

@@ -1,0 +1,155 @@
+<header class="bg-light py-3">
+  <div class="container d-flex justify-content-between align-items-center">
+    <div class="text-muted">
+      <i class="fas fa-shield-alt"></i> Secure Checkout
+    </div>
+  </div>
+</header>
+
+<div class="card">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-8">
+        <div class="shadow-box">
+          <h5><i class="fas fa-user"></i> Personal Information</h5>
+          @if (Order.paymentMethod!=paymentMethod.CashOnDelivery) {
+          <form>
+            <div class="mb-3">
+              <label class="form-label no-arrow">Credit Card Number</label>
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="Order.CreditCardNumber"
+                [class.is-invalid]="submitted && !Order.CreditCardNumber"
+                oninput="this.value = this.value.slice(0, 16)"
+                name="CreditCardNumber"
+                required
+              />
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Expiry Date</label>
+                <div class="d-flex">
+                  <select
+                    class="form-select me-2"
+                    [(ngModel)]="Order.ExpiryMonth"
+                    [class.is-invalid]="submitted && !Order.ExpiryMonth"
+                    name="ExpiryMonth"
+                  >
+                    @for (month of months; track month) {
+                    <option [value]="month">{{ month }}</option>
+                    }
+                  </select>
+                  <select
+                    class="form-select"
+                    [(ngModel)]="Order.ExpiryYear"
+                    [class.is-invalid]="submitted && !Order.ExpiryYear"
+                    name="ExpiryYear"
+                  >
+                    @for (year of years; track year) {
+                    <option [value]="year">{{ year }}</option>
+                    }
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">CVV Code</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  [(ngModel)]="Order.CVVCode"
+                  [class.is-invalid]="submitted && !Order.CVVCode"
+                  name="CVVCode"
+                  oninput="this.value = this.value.slice(0, 3)"
+                  required
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Name on Card</label>
+              <input type="text" class="form-control" minlength="10" />
+            </div>
+          </form>
+          }
+        </div>
+      </div>
+      
+
+      <div class="col-md-4 mt-4 mt-md-0">
+        <div class="shadow-box mb-6">
+          <h5><i class="fas fa-credit-card"></i> Payment Method</h5>
+          <div class="payment-methods">
+            <button
+              class="btn btn-outline-primary"
+              [class.active]="Order.paymentMethod === paymentMethod.CreditCard"
+              (click)="selectPaymentMethod(paymentMethod.CreditCard)"
+            >
+              <i class="fas fa-credit-card"></i> Credit Card
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              [class.active]="Order.paymentMethod === paymentMethod.DebitCard"
+              (click)="selectPaymentMethod(paymentMethod.DebitCard)"
+            >
+              <i class="fa-regular fa-credit-card"></i> debit_card
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              [class.active]="Order.paymentMethod === paymentMethod.PayPal"
+              (click)="selectPaymentMethod(paymentMethod.PayPal)"
+            >
+              <i class="fab fa-paypal"></i> Paypal
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              [class.active]=" Order.paymentMethod === paymentMethod.BankTransfer"
+              (click)="selectPaymentMethod(paymentMethod.BankTransfer)"
+            >
+              <i class="fa-solid fa-money-bill-transfer"></i> bank_transfer
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              [class.active]="Order.paymentMethod === paymentMethod.CashOnDelivery"
+              (click)="selectPaymentMethod(paymentMethod.CashOnDelivery)"
+            >
+              <i class="fas fa-file-invoice"></i> COD
+            </button>
+          </div>
+        </div>
+        <div class="shadow-box mt-4">
+          <h5><i class="fas fa-shipping-fast"></i> Shipping Information</h5>
+          <p>
+            <strong> {{ Name }}</strong>
+          </p>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="Order.shippingAddress"
+            [class.is-invalid]="submitted && !Order.shippingAddress"
+            placeholder="Shipping Address"
+            name="shippingAddress"
+            required
+          />
+          <input
+            type="number"
+            class="form-control mt-4"
+            [(ngModel)]="Order.PhoneNumber"
+            [class.is-invalid]="submitted && !Order.PhoneNumber"
+            placeholder="Phone Number"
+            name="PhoneNumber"
+            oninput="this.value = this.value.slice(0, 12)"
+            required
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="my-4 Checkout">
+      <a href="cart" class="arrow">&leftarrow;</a
+      ><span class="text-muted">Back to shop</span>
+      <button class="btn btn-success btn-lg" (click)="placeOrder()">
+        Place your Order <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

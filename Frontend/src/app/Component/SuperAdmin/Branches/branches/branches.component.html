@@ -1,0 +1,92 @@
+
+<app-side-bar></app-side-bar>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>seller</title>
+    <!--favicon-->
+    <link rel="icon" href="../../../../../assets/images/favicon-32x32.png" type="image/png">
+    <!-- loader-->
+    <link href="../../../../../assets/css/pace.min.css" rel="stylesheet">
+    <script src="../../../../../assets/js/pace.min.js"></script>
+
+    <!--plugins-->
+    <link href="../../../../../assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../../../../assets/plugins/metismenu/metisMenu.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../../assets/plugins/metismenu/mm-vertical.css">
+    <link rel="stylesheet" type="text/css" href="../../../../../assets/plugins/simplebar/css/simplebar.css">
+    <!--bootstrap css-->
+    <link href="../../../../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+    <!--main css-->
+    <link href="../../../../../assets/css/bootstrap-extended.css" rel="stylesheet">
+    <link href="../../../../../assets/sass/main.css" rel="stylesheet">
+    <!-- <link href="sass/dark-theme.css" rel="stylesheet">
+    <link href="sass/blue-theme.css" rel="stylesheet">
+    <link href="sass/semi-dark.css" rel="stylesheet"> -->
+    <link href="../../../../../assets/sass/bordered-theme.css" rel="stylesheet">
+    <link href="../../../../../assets/sass/responsive.css" rel="stylesheet">
+
+</head>
+
+<main class="main-wrapper">
+    <div class="main-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">Dashboard</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">PerfuMe</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+<div class="container mt-5">
+    <h1 class="text-center">Branches</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <!-- Dynamically generate buttons for each branch -->
+        @for(item of branches;track item.branchLocation ){
+
+          <a
+            [routerLink]="['SuperAdminBranches/BranchDetails']"
+            (click)="ShowBranch(item)"
+            class="btn btn-primary"
+          >
+          <button  class="btn btn-primary m-2">{{item.branchLocation}} Branch</button>
+          </a>
+        }
+        <!-- <button
+          *ngFor="let branch of branches"
+          class="btn btn-primary m-2"
+          (click)="showBranchDetails(branch)"
+        >
+          {{ branch.branchLocation }}
+        </button> -->
+      </div>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+      <!-- Display branch details -->
+      
+    </div>
+  </div>
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+      <!-- <app-internal-order></app-internal-order>
+       -->
+       <router-outlet></router-outlet>
+    </div>
+  </div>
+
+
+    </div>
+</main>
+  

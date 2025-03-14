@@ -1,0 +1,10 @@
+/* Add to your component's CSS */
+.card-header input {
+    width: 300px;
+    margin-left: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .card-header input:focus {
+    width: 400px;
+  }

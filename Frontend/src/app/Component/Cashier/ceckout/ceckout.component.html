@@ -1,0 +1,231 @@
+<app-side-nav>
+  <div class="card">
+      <div class="row">
+        <div class="col-md-8 cart">
+          <div class="title">
+            <div class="row">
+              <div class="col">
+                <h4><b>Shopping Cart</b></h4>
+              </div>
+              <div class="col align-self-center text-right text-muted">
+                {{ cartItems.length }} ITEMS
+              </div>
+            </div>
+          </div>
+    
+          <!-- loop start-->
+          @for (item of cartItems; track item.productId) { @if(item.isAvailable){ 
+          <div class="row border-top border-bottom">
+            <div class="row main align-items-center">
+              <div class="col-2">
+                <img class="img-fluid" [src]="item.productImage" />
+              </div>
+              <div class="col">
+                <div class="row text-muted">{{item.productName}}</div>
+              </div>
+              <div class="col">
+                <div class="quantity-control d-flex align-items-center">
+                  <button
+                    class="btn5 btn btn-primary btn-sm px-3 fw-bold"
+                    (click)="decreaseCartItem(item.productId, 1)"
+                  >
+                    -
+                  </button>
+                  <input
+                    min="0"
+                    [value]="item.quantity"
+                    type="number"
+                    class="text-center mx-2"
+                    style="max-width: 3rem"
+                  />
+                  <button
+                    class=" btn5 btn btn-primary btn-sm px-3 fw-bold"
+                    (click)="addToCart(item.productId, 1)"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div class="col">&euro; {{ item.price }}</div>
+              <div class="col">
+                <p class="btn-close" (click)="removeFromCart(item.productId)"></p>
+              </div>
+            </div>
+          </div>
+          } }
+          <!-- Loop through cart items -->
+          @if(unavailableItems){
+          <div class="col unavailable-section">
+            <h4><b>Not Available</b></h4>
+          </div>
+          } @for (item of cartItems; track item.productId) { @if(!item.isAvailable){
+          <div class="row border-top border-bottom unavailable-item">
+            <div class="row main align-items-center">
+              <div class="col-2">
+                <img class="img-fluid"  [src]="item.productImage" />
+              </div>
+              <div class="col">
+                <div class="row text-muted">{{item.productName}}</div>
+              </div>
+              <div class="col">
+                <div class="quantity-control d-flex align-items-center">
+                  <button class="btn btn-primary btn-sm px-3 fw-bold" disabled>
+                    -
+                  </button>
+                  <input
+                    min="0"
+                    [value]="item.quantity"
+                    type="number"
+                    class="text-center mx-2"
+                    style="max-width: 3rem"
+                    disabled
+                  />
+                  <button class="btn btn-primary btn-sm px-3 fw-bold" disabled>
+                    +
+                  </button>
+                </div>
+              </div>
+              <div class="col">&euro; {{ item.price }}</div>
+              <div class="col">
+                <p class="btn-close" (click)="removeFromCart(item.productId)"></p>
+              </div>
+            </div>
+          </div>
+          } }
+    
+          <div class="back-to-shop">
+            <a href="/cashier/getInventory" class="arrow">&leftarrow;</a
+            ><span class="text-muted">Back to shop</span>
+          </div>
+        </div>
+        <div class="col-md-4 summary">
+          <div>
+            <h2><b>Summary</b></h2>
+          </div>
+          <hr />
+          @for (item of cartItems; track $index) { @if(item.isAvailable){
+    
+          <div class="row">
+            <div class="col" style="padding-left: 0">{{ item.quantity }} ITEMS</div>
+            <div class="col text-right">&euro;{{ item.quantity * item.price }}</div>
+          </div>
+          } }
+    
+          <div
+            class="row"
+            style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0"
+          >
+            <div class="col">TOTAL PRICE</div>
+            <div class="col text-right">&euro; {{ total }}</div>
+          </div>
+    
+          <!-- Checkout Form -->
+          <div class="shadow-box mt-4">
+            <h5><i class="fas fa-user"></i> Personal Information</h5>
+            @if (Order.paymentMethod!=paymentMethod.CashOnDelivery) {
+            <form>
+              <div class="mb-3">
+                <label class="form-label no-arrow">Credit Card Number</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  [(ngModel)]="Order.CreditCardNumber"
+                  [class.is-invalid]="submitted && !Order.CreditCardNumber"
+                  oninput="this.value = this.value.slice(0, 16)"
+                  name="CreditCardNumber"
+                  required
+                />
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Expiry Date</label>
+                  <div class="d-flex">
+                    <select
+                      class="form-select me-2"
+                      [(ngModel)]="Order.ExpiryMonth"
+                      [class.is-invalid]="submitted && !Order.ExpiryMonth"
+                      name="ExpiryMonth"
+                    >
+                      @for (month of months; track month) {
+                      <option [value]="month">{{ month }}</option>
+                      }
+                    </select>
+                    <select
+                      class="form-select"
+                      [(ngModel)]="Order.ExpiryYear"
+                      [class.is-invalid]="submitted && !Order.ExpiryYear"
+                      name="ExpiryYear"
+                    >
+                      @for (year of years; track year) {
+                      <option [value]="year">{{ year }}</option>
+                      }
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">CVV Code</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    [(ngModel)]="Order.CVVCode"
+                    [class.is-invalid]="submitted && !Order.CVVCode"
+                    name="CVVCode"
+                    oninput="this.value = this.value.slice(0, 3)"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Name on Card</label>
+                <input type="text" class="form-control" minlength="10" />
+              </div>
+            </form>
+            }
+          </div>
+    
+          <div class="shadow-box mt-4">
+            <h5><i class="fas fa-credit-card"></i> Payment Method</h5>
+            <div class="payment-methods">
+              <button
+                class="btn btn-outline-primary"
+                [class.active]="Order.paymentMethod === paymentMethod.CreditCard"
+                (click)="selectPaymentMethod(paymentMethod.CreditCard)"
+              >
+                <i class="fas fa-credit-card"></i> Credit Card
+              </button>
+              <button
+                class="btn btn-outline-primary"
+                [class.active]="Order.paymentMethod === paymentMethod.DebitCard"
+                (click)="selectPaymentMethod(paymentMethod.DebitCard)"
+              >
+                <i class="fa-regular fa-credit-card"></i> debit_card
+              </button>
+              <button
+                class="btn btn-outline-primary"
+                [class.active]="Order.paymentMethod === paymentMethod.PayPal"
+                (click)="selectPaymentMethod(paymentMethod.PayPal)"
+              >
+                <i class="fab fa-paypal"></i> Paypal
+              </button>
+              <button
+                class="btn btn-outline-primary"
+                [class.active]=" Order.paymentMethod === paymentMethod.BankTransfer"
+                (click)="selectPaymentMethod(paymentMethod.BankTransfer)"
+              >
+                <i class="fa-solid fa-money-bill-transfer"></i> bank_transfer
+              </button>
+              <button
+                class="btn btn-outline-primary"
+                [class.active]="Order.paymentMethod === paymentMethod.CashOnDelivery"
+                (click)="selectPaymentMethod(paymentMethod.CashOnDelivery)"
+              >
+                <i class="fas fa-file-invoice"></i> COD
+              </button>
+            </div>
+          </div>
+    
+  
+          <button class="btn1" (click)="placeOrder()">CHECKOUT</button>
+        </div>
+      </div>
+    </div>

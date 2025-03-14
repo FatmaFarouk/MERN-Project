@@ -1,0 +1,42 @@
+.card {
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px; 
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.05); 
+}
+
+.custom-btn {
+    background-color: var(--primary-color); 
+    color: #FFFFFF; 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px; 
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: var(--secondary-color); 
+    transform: scale(1.05); 
+}
+
+.custom-btn:active {
+    background-color: var(--active-color); 
+    transform: scale(0.95); 
+}
+

@@ -1,0 +1,41 @@
+.form-control:focus {
+    outline: none;
+    border: 1px solid black !important;
+    box-shadow: none;
+  }
+
+  .clickable-row:hover {
+    background-color: #f8f9fa !important;
+  }
+
+  .table th,
+  .table td {
+    vertical-align: middle;
+    text-align: center;
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    min-height: 100%; 
+  }
+
+  .customer-table {
+    flex-grow: 1;
+    overflow-y: auto; 
+  }
+
+  #pagination-controls {
+    margin-top: 20px; 
+  }
+  .delete-btn {
+    cursor: pointer;
+    color: white;
+    background-color: red;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  .delete-btn:hover {
+    background-color: darkred;
+  }

@@ -1,0 +1,138 @@
+:root {
+  --primary-color: #ff6b6b;
+  --secondary-color: #ff5252;
+  --active-color: #ff3d3d;
+}
+body {
+  background: #ddd;
+  min-height: 150vh;
+  vertical-align: middle;
+  display: flex;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.title {
+  margin-bottom: 15vh;
+}
+.card {
+  margin: auto;
+  margin-top: 8%;
+  margin-bottom: 8%;
+  max-width: 90%;
+  width: 90%;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 1.5);
+  border-radius: 1rem;
+  border: transparent;
+}
+@media (max-width: 767px) {
+  .card {
+    margin: 3vh auto;
+  }
+}
+.cart {
+  background-color: #fff;
+  padding: 4vh 5vh;
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+@media (max-width: 767px) {
+  .cart {
+    padding: 4vh;
+    border-top-right-radius: 1rem;
+  }
+}
+.summary {
+  background-color: #ddd;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 4vh;
+  color: rgb(65, 65, 65);
+}
+@media (max-width: 767px) {
+  .summary {
+    border-top-right-radius: unset;
+    border-bottom-left-radius: 1rem;
+  }
+}
+
+.title b {
+  font-size: 2.5rem;
+}
+.main {
+  margin: 0;
+  padding: 3vh 0;
+  width: 100%;
+}
+.col-2,
+.col {
+  padding: 0 1vh;
+}
+a {
+  padding: 0 1vh;
+  margin: 1vh;
+}
+img {
+  width: 3.5rem;
+}
+.back-to-shop {
+  margin-top: 5rem;
+}
+hr {
+  margin-top: 1.25rem;
+}
+.btn1 {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  width: 100%;
+  padding: 10px 20px;
+  margin-top: 5vh;
+  border-radius: 25px;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn1:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+a {
+  color: black;
+}
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+.btn {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.arrow{
+    font-size: 2rem;
+}
+
+/* unavlaible section */
+.unavailable-section{
+  margin-top: 15vh;
+  margin-bottom: 3vh;
+  color: #c2c2c2;
+}
+.unavailable-item {
+  opacity: 0.8;  
+  background-color: #fadddf; 
+}
+
+.unavailable-item .quantity-control input,
+.unavailable-item .quantity-control button {
+  background-color: #e0e0e0;  
+  border-color: #e0e0e0;
+  color: #ff6b6b;
+  cursor: not-allowed;  
+}
+
+

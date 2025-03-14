@@ -1,0 +1,51 @@
+.bg-custom {
+  background-color: #333 !important;
+}
+
+.navbar-nav.mx-auto {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.nav-link {
+  color: white !important;
+  transition: border-bottom 0.3s ease;
+  margin: 0 15px;
+}
+
+.nav-link:hover {
+  border-bottom: 2px solid white;
+}
+
+.btn-outline-success {
+  color: white;
+  border-color: white;
+}
+
+.btn-outline-success:hover {
+  background-color: white;
+  color: #333;
+}
+
+.navbar-brand {
+  margin-left: 80px;
+}
+
+  .d-flex.me-3 {
+    margin-right: 100px;
+  }
+
+
+/* .navbar-custom {
+    padding-right: 50px;
+  } */
+
+  /* .navbar-collapse {
+    display: none;
+  }
+  
+  .navbar-collapse.show {
+    display: block;
+  } */
+  

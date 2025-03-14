@@ -1,0 +1,36 @@
+<div class="container my-5" *ngIf="product">
+  <div class="row">
+   
+    <div class="col-md-6 text-center">
+      <img src="{{product.images}}" alt="" class="img-fluid"> 
+    </div>
+
+    <div class="col-md-6">
+
+      <h2>{{product.name}}</h2>
+      <p>{{product.description}}</p>
+      <h3>${{product.price}}</h3>
+
+      <!-- another image for product -->
+
+      <!-- <div class="text-center mt-3 *ngIf="product.images?.length > 1">
+        <img [src]="product.images[1]"  class="img-fluid">
+      </div> -->
+
+      <!-- quantity -->
+      <div class="quantity-control my-4">
+        <button class="btn btn-outline-secondary" (click)="decreaseQuantity()">-</button>
+        <span class="mx-3">{{ quantity }}</span>
+        <button class="btn btn-outline-secondary" (click)="increaseQuantity()">+</button>
+      </div>
+
+      <div class="my-5">
+        <button class="btn custom-btn me-2" (click)="addToCart()">Add to Cart</button>
+        <button class="btn custom-btn" (click)="goBack()"><i class="fas fa-arrow-left"></i> Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<p class="text-center mt-5" *ngIf="!product">Loading product details...</p>

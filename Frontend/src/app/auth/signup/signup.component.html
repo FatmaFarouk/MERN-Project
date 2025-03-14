@@ -1,0 +1,155 @@
+<div class="form-container">
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <h2>Sign Up</h2>
+
+    <input
+      placeholder="First Name"
+      id="firstName"
+      formControlName="firstName"
+      type="text"
+    />
+    <div
+      *ngIf="
+        signupForm.get('firstName')?.touched &&
+        signupForm.get('firstName')?.errors
+      "
+    >
+      <div
+        *ngIf="signupForm.get('firstName')?.hasError('required')"
+        class="error"
+      >
+        First name is required
+      </div>
+      <div
+        *ngIf="signupForm.get('firstName')?.hasError('pattern')"
+        class="error"
+      >
+        Only letters, spaces, hyphens, and apostrophes allowed
+      </div>
+    </div>
+
+    <input
+      placeholder="Last Name"
+      id="lastName"
+      formControlName="lastName"
+      type="text"
+    />
+    <div
+      *ngIf="
+        signupForm.get('lastName')?.touched &&
+        signupForm.get('lastName')?.errors
+      "
+    >
+      <div
+        *ngIf="signupForm.get('lastName')?.hasError('required')"
+        class="error"
+      >
+        Last name is required
+      </div>
+      <div
+        *ngIf="signupForm.get('lastName')?.hasError('pattern')"
+        class="error"
+      >
+        Only letters, spaces, hyphens, and apostrophes allowed
+      </div>
+    </div>
+
+    <input
+      placeholder="Email"
+      id="email"
+      formControlName="email"
+      type="email"
+    />
+    <div
+      *ngIf="
+        signupForm.get('email')?.touched && signupForm.get('email')?.errors
+      "
+    >
+      <div *ngIf="signupForm.get('email')?.hasError('required')" class="error">
+        Email is required
+      </div>
+      <div *ngIf="signupForm.get('email')?.hasError('pattern')" class="error">
+        Invalid email format
+      </div>
+    </div>
+
+    <input
+      placeholder="Password"
+      id="password"
+      formControlName="password"
+      type="password"
+    />
+    <div
+      *ngIf="
+        signupForm.get('password')?.touched &&
+        signupForm.get('password')?.errors
+      "
+    >
+      <div
+        *ngIf="signupForm.get('password')?.hasError('required')"
+        class="error"
+      >
+        Password is required
+      </div>
+      <div
+        *ngIf="signupForm.get('password')?.hasError('minlength')"
+        class="error"
+      >
+        Minimum 8 characters
+      </div>
+      <div
+        *ngIf="signupForm.get('password')?.hasError('pattern')"
+        class="error"
+      >
+        Must contain at least one uppercase, one lowercase, one number, and one
+        special character
+      </div>
+    </div>
+
+    <input
+      placeholder="Confirm Password"
+      id="passwordConfirm"
+      formControlName="passwordConfirm"
+      type="password"
+    />
+    <div
+      *ngIf="
+        signupForm.get('passwordConfirm')?.touched &&
+        signupForm.get('passwordConfirm')?.errors
+      "
+    >
+      <div
+        *ngIf="signupForm.get('passwordConfirm')?.hasError('required')"
+        class="error"
+      >
+        Confirmation is required
+      </div>
+    </div>
+    <div
+      *ngIf="
+        signupForm.hasError('passwordMismatch') &&
+        signupForm.get('passwordConfirm')?.touched
+      "
+      class="error"
+    >
+      Passwords do not match
+    </div>
+
+    <div class="form-group">
+      <select id="role" formControlName="role" class="form-control">
+        <option value="customer">Customer</option>
+        <option value="seller">Seller</option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+
+    <a
+      [routerLink]="['/login']"
+      routerLinkActive="router-link-active"
+      class="centered-link"
+    >
+      Already have an account?
+    </a>
+  </form>
+</div>

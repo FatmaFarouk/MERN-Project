@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="header text-center my-5">
+        <h2>Best Seller</h2>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4" *ngFor="let product of bestSellers">
+            <div class="product text-center">
+                <img [src]="product.images" class="img-fluid mb-3 best-seller-img">
+                <h2 class="mb-4">{{ product.name }}</h2>
+                <button class="btn custom-btn w-100" (click)="viewDetails(product._id)">View Details</button> 
+            </div>
+        </div>
+    </div>
+</div>

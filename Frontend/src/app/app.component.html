@@ -1,0 +1,13 @@
+<!-- <app-admin-sidenav></app-admin-sidenav> -->
+<!-- <app-analysis></app-analysis> -->
+<!-- <app-order-list></app-order-list>
+<app-product-list></app-product-list> -->
+<div *ngIf="!hideHeaderAndFooter">
+  <app-header></app-header>
+</div>
+
+<router-outlet></router-outlet>
+
+<div *ngIf="!hideHeaderAndFooter">
+  <app-footer></app-footer>
+</div>

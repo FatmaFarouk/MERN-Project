@@ -1,0 +1,59 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h3 class="card-title text-center">Add Order To {{branch?.branchLocation}} Branch</h3>
+          </div>
+          <div class="card-body">
+            <!-- Order Form -->
+            <form (ngSubmit)="onSubmit()">
+              <!-- Product ID -->
+              
+                <div class="mb-3">
+                  <!-- Search Input -->
+                  
+                
+                  <!-- Select Dropdown -->
+                  <label for="productId" class="form-label">Select Product</label>
+                  <select
+                    class="form-control"
+                    id="productId"
+                    [(ngModel)]="order.productId"
+                    name="productId"
+                    required
+                  >
+                  @for(item of products;track item._id ){
+                    <option >
+                     {{ item.productId }}
+                    </option>
+                  }
+                  </select>
+                </div>
+              <!-- Quantity -->
+              <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="quantity"
+                  [(ngModel)]="order.quantity"
+                  name="quantity"
+                  placeholder="Enter Quantity"
+                  required
+                  min="1"
+                />
+              </div>
+  
+              <!-- Customer Name -->
+              
+              <!-- Submit Button -->
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Submit Order</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

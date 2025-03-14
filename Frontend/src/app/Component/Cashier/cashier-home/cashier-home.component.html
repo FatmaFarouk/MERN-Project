@@ -1,0 +1,28 @@
+<app-side-nav>
+  <div class="branch-title-container">
+    <h1 class="branch-title">{{ inventoryName }} Branch</h1>
+  </div>
+  
+  <div class="row gy-4">
+    @for (item of inventoryItem; track $index) {
+    <div  class="col-md-2 col-sm-8 col-md-6 col-lg-4">
+      <div class="card shadow-sm custom-shadow">
+        <img [src]="item.productImage" alt="Product Image" class="card-img-top">
+        <div class="card-body text-center p-2">
+          <h5 class="card-title">{{ item.productName }}</h5>
+          <p class="fw-bold m-0">Price: ${{ item.price }}</p>
+          <p> {{item.stock}} items in stoch</p>
+          <button
+            mat-raised-button
+            color="primary"
+            class="custom-btn mt-2"
+            (click)="addtocart(item.productId, 1)"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+  </div>
+</app-side-nav>

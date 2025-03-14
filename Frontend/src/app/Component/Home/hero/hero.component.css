@@ -1,0 +1,33 @@
+.hero-section {
+    background-image: url(../../../../../public/assets/bg-hero.jpg);
+    background-size: cover;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+  
+}
+
+.hero-text {
+    color: #eee;
+    
+}
+
+.custom-btn {
+    background-color: var(--primary-color); 
+    color: #FFFFFF; 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px; 
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: var(--secondary-color); 
+    transform: scale(1.05); 
+}
+
+.custom-btn:active {
+    background-color: var(--active-color); 
+    transform: scale(0.95); 
+}

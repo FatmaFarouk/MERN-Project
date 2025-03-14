@@ -1,0 +1,60 @@
+:root {
+    --primary-color: #ff6b6b;
+    --secondary-color: #ff5252;
+    --active-color: #ff3d3d;
+  }
+.shadow-box {
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.Checkout button{
+  border-radius: 25px;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  margin-left: 2rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.Checkout button:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+.arrow{
+  font-size: 2rem;
+  
+}
+a {
+  color: black;
+}
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+.payment-methods .btn {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  padding: 0.8rem;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.payment-methods .btn:hover {
+    background-color: var(--active-color);
+    color: #fff;
+  }
+.payment-methods .btn.active {
+  background-color: var(--active-color);
+  color: #fff;
+}
+
+.card {
+  margin: auto;
+  margin-top: 2%;
+  margin-bottom: 8%;
+  max-width: 90%;
+  width: 90%;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 1.5);
+  border-radius: 1rem;
+  border: transparent;
+}

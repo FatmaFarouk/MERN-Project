@@ -1,0 +1,43 @@
+:root {
+  --primary-color: #ff6b6b;
+  --secondary-color: #ff5252;
+  --active-color: #ff3d3d;
+}
+.sidenav-container {
+  height: 100vh; 
+}
+
+mat-sidenav {
+  width: 200px; /* Width of the side nav */
+  background-color: var(--primary-color);
+  border-radius: 0% 4% 4% 0%;
+}
+
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  padding: 16px; 
+}
+
+.item:hover{
+  background-color: var(--active-color);
+  color: white;
+  border-radius: 0% 8% 8% 0%;
+}
+
+.active-link {
+  font-weight: bold;
+  color: var(--active-color); /* Change to match your theme */
+  background-color:rgba(255, 255, 255, 0.2);
+  border-left: 4px solid var(--active-color);
+  color: white;
+}
+
+.mat-sidenav-content{
+  padding-left: 6%;
+}
+

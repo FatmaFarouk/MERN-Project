@@ -1,0 +1,108 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-custom navbar-custom">
+  <a class="navbar-brand text-white" href="#">PerfuMe</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item active">
+        <a
+          class="nav-link"
+          [routerLink]="['home']"
+          routerLinkActive="router-link-active"
+          >Home <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="products">Products</a>
+      </li>
+      <!-- <li class="nav-item">
+              <a class="nav-link" href="#">About Us</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Connect Us</a>
+          </li> -->
+      <li class="nav-item">
+        <a class="nav-link" routerLink="cart">
+          <i class="bi bi-cart-fill"></i>
+        </a>
+      </li>
+    </ul>
+    <div
+      *ngIf="auth.isLoggedIn()"
+      class="profile-icon d-flex align-items-center me-3"
+    >
+      <a class="nav-link" routerLink="user">
+        <i class="bi bi-person-circle"></i>
+      </a>
+    </div>
+    <div class="d-flex me-5" *ngIf="auth.isLoggedIn()">
+      <button
+        class="btn btn-outline-success me-2"
+        type="button"
+        routerLink="logout"
+        (click)="auth.logout()"
+      >
+        Logout
+      </button>
+    </div>
+    <div class="d-flex me-3" *ngIf="!auth.isLoggedIn()">
+      <button
+        class="btn btn-outline-success me-2"
+        type="button"
+        routerLink="signup"
+      >
+        Signup
+      </button>
+      <button class="btn btn-outline-success" type="button" routerLink="login">
+        Login
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- 
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom ">
+    <a class="navbar-brand" href="#">PerfuMe</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['home']" routerLinkActive="router-link-active"  routerLinkActive="router-link-active" >Home <span class="sr-only">(current)</span></a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" routerLink="products">Products</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Connect Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="cart">
+              <i class="bi bi-cart-fill"></i>
+              <!-- <span class="ms-2">Cart</span> -->
+<!-- </a>
+          </li>
+      </ul>
+      <div class="navbar-nav ms-auto" *ngIf="auth.isLoggedIn()" >
+        <button class="btn btn-outline-success" type="button" routerLink="logout" (click)="auth.logout()" >logout</button>
+      </div>
+      <div *ngIf="!auth.isLoggedIn()" >
+        <button class="btn btn-outline-success me-2" type="button" routerLink="signup">Signup</button>
+        <button class="btn btn-outline-success" type="button" routerLink="login">Login</button>
+      </div>
+    </div>
+  </nav> -->
